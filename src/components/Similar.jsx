@@ -5,7 +5,7 @@ import Movie from "./Movie";
 
 //icon
 
-function Similar({id, media_type}) {
+function Similar({ id, media_type }) {
   const [movies, setMovies] = useState([]);
 
   // const { id, media_type } = useParams();
@@ -26,20 +26,20 @@ function Similar({id, media_type}) {
   }, []);
 
   return (
-    <div className='relative text-white mb-8 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5'>
-        {movies.map((movie) => (
-          <Movie
-            className=''
-            key={movie.id}
-            id={movie.id}
-            poster_path={movie.poster_path}
-            title={movie.title === undefined ? movie.name : movie.title}
-            imdb={movie.vote_average}
-            media_type={media_type}
-          />
-        ))}
+    <div className='relative text-white mb-8 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2'>
+      {movies.map((movie) => (
+        <Movie
+          className='h-full'
+          key={movie.id}
+          id={movie.id}
+          poster_path={movie.poster_path}
+          title={movie.title === undefined ? movie.name : movie.title}
+          imdb={movie.vote_average}
+          media_type={media_type}
+        />
+      ))}
     </div>
   );
-};
+}
 
 export default Similar;

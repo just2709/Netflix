@@ -4,16 +4,15 @@ import { useState, useEffect, useRef } from "react";
 import Movie from "../components/Movie";
 import { FaSearch } from "react-icons/fa";
 
-
 function Movies() {
   const [movies, setMovies] = useState(null);
   const [moviesTrend, setMoviesTrend] = useState(null);
   const [isSearched, setIsSearched] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(null);
-  const [keySearch, setKeySearch] = useState('');
+  const [keySearch, setKeySearch] = useState("");
 
-  const textSearch = useRef()
+  const textSearch = useRef();
 
   const getTrendingMovies = async () => {
     const json = await (
@@ -46,12 +45,12 @@ function Movies() {
     return item.poster_path !== null;
   }
   useEffect(() => {
-    if(isSearched) {
+    if (isSearched) {
       getMovies();
     } else {
-      getTrendingMovies()
+      getTrendingMovies();
     }
-  }, [keySearch ,isSearched, currentPage]);
+  }, [keySearch, isSearched, currentPage]);
 
   // console.log(totalPage)
   function More() {
@@ -59,10 +58,10 @@ function Movies() {
   }
 
   function search() {
-    setMovies(null)
+    setMovies(null);
     setKeySearch(textSearch.current.value);
     setIsSearched(true);
-    setCurrentPage(1)
+    setCurrentPage(1);
   }
   return (
     <div className='max-w-[1200px] mx-auto px-2 lg:px-10 text-white pt-20'>
@@ -75,44 +74,47 @@ function Movies() {
             className='text-xl w-full p-2 rounded-3xl outline-none'
             placeholder='Search here...'
           />
-          <FaSearch onClick={search} className='absolute right-5 cursor-pointer' />
+          <FaSearch
+            onClick={search}
+            className='absolute right-5 cursor-pointer'
+          />
         </div>
       </div>
-      {isSearched ? (
-        movies && (
-          <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5'>
-            <h1 className='text-2xl font-bold mt-5 text-white col-span-2 sm:col-span-3 lg:col-span-5'>Search for <span className='text-red-500'>{keySearch}</span></h1>
-            {movies.map((movie, index) => (
-              <Movie
-                className=''
-                key={index}
-                id={movie.id}
-                poster_path={movie.poster_path}
-                title={movie.title === undefined ? movie.name : movie.title}
-                imdb={movie.vote_average}
-                media_type='movie'
-              />
-            ))}
-          </div>
-        )
-      ) : (
-        moviesTrend && (
-          <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 '>
-            {moviesTrend.map((movie, index) => (
-              <Movie
-                className=''
-                key={index}
-                id={movie.id}
-                poster_path={movie.poster_path}
-                title={movie.title === undefined ? movie.name : movie.title}
-                imdb={movie.vote_average}
-                media_type='movie'
-              />
-            ))}
-          </div>
-        )
-      )}
-      
+      {isSearched
+        ? movies && (
+            <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5'>
+              <h1 className='text-2xl font-bold mt-5 text-white col-span-2 sm:col-span-3 lg:col-span-5'>
+                Search for <span className='text-red-500'>{keySearch}</span>
+              </h1>
+              {movies.map((movie, index) => (
+                <Movie
+                  className=''
+                  key={index}
+                  id={movie.id}
+                  poster_path={movie.poster_path}
+                  title={movie.title === undefined ? movie.name : movie.title}
+                  imdb={movie.vote_average}
+                  media_type='movie'
+                />
+              ))}
+            </div>
+          )
+        : moviesTrend && (
+            <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5'>
+              {moviesTrend.map((movie, index) => (
+                <Movie
+                  className=''
+                  key={index}
+                  id={movie.id}
+                  poster_path={movie.poster_path}
+                  title={movie.title === undefined ? movie.name : movie.title}
+                  imdb={movie.vote_average}
+                  media_type='movie'
+                />
+              ))}
+            </div>
+          )}
+
       <div className='w-full mx-auto pb-10 flex'>
         <button
           className={`${

@@ -16,7 +16,7 @@ function App() {
         <Route path="/:media_type/:id" element={<Detail />}/>
         <Route path="/movies" element={<Movies />}/>
         <Route path="/series" element={<TVs />}/>
-        <Route path="/" element={<Home />}/>
+        <Route path="/Netflix" element={<Home />}/>
 
       </Routes>
     </Router>

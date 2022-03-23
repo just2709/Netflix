@@ -35,7 +35,7 @@ function HeroSlide() {
 
   return (
     <div className='relative text-white hidden lg:block'>
-      <Slider className='lg:px-2' {...settings}>
+      <Slider className='' {...settings}>
         {movies.map((movie) => (
           <div className='relative' key={movie.id}>
             <div

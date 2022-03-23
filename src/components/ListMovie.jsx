@@ -31,25 +31,34 @@ function ListMovie({apiUrl, name, media_type, type, isLoading}) {
 
   const settings = {
     infinite: false,
-    speed: 500,
     slidesToShow: 4.5,
-    swipeToSlide: true,
+    initialSlide: 0,
     arrows: true,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3.5,
-          slidesToScroll: 3,
+          // slidesToScroll: 3,
           arrows: false,
+          infinite: false,
+          initialSlide: 0,
+    swipeToSlide: true,
+
         },
       },
       {
         breakpoint: 640,
         settings: {
           slidesToShow: 2.5,
-          slidesToScroll: 2,
+          
+          // slidesToScroll: 2,
+          infinite: false,
+          initialSlide: 0,
           arrows: false,
+    swipeToSlide: true,
+
+
         },
       },
     ],
@@ -65,7 +74,7 @@ function ListMovie({apiUrl, name, media_type, type, isLoading}) {
           </button>
         </Link>
         
-        <Slider className='lg:px-2' {...settings}>
+        <Slider focusOnSelect={true} className='lg:px-2' {...settings}>
         {movies.map((movie) => (
           <Movie
             className=''

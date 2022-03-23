@@ -11,8 +11,8 @@ function Video({name, keyVideo}) {
 
     return (
         <div className="col-span-3">
-            <div className="video__title">
-                <h1 className="font-bold text-2xl">{name}</h1>
+            <div className="video__title mt-3">
+                <h1 className="font-bold text-xl lg:text-2xl">{name}</h1>
             </div>
             <iframe
                 src={`https://www.youtube.com/embed/${keyVideo}`}
