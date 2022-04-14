@@ -23,6 +23,8 @@ function HeroSlide() {
     getMovies();
   }, []);
 
+  console.log(movies);
+
   const settings = {
     infinite: true,
     speed: 500,
@@ -60,16 +62,32 @@ function HeroSlide() {
                 </h1>
               </Fade>
 
-              <Fade bottom>
-                <Link to={`/${movie.media_type}/${movie.id}`}>
-                  <button className='bg-red-600 px-10 py-2 rounded-full mr-5 text-2xl font-semibold lg:hover:scale-105'>
-                    Watch now
-                  </button>
-                  <button className='bg-white text-red-600 px-10 py-2 rounded-full text-2xl font-semibold lg:hover:scale-105'>
-                    Watch trailer
-                  </button>
+              {movie.media_type === "movie" ? (
+                <Link to={`/watch/${movie.media_type}/${movie.id}`}>
+                  <Fade bottom>
+                    <button className='bg-red-600 px-10 py-2 rounded-full mr-5 text-2xl font-semibold lg:hover:scale-105'>
+                      Watch now
+                    </button>
+                  </Fade>
                 </Link>
-              </Fade>
+              ) : (
+                <Link
+                  to={`/watch/${movie.media_type}/${movie.id}/season1/esp1`}>
+                  <Fade bottom>
+                    <button className='bg-red-600 px-10 py-2 rounded-full mr-5 text-2xl font-semibold lg:hover:scale-105'>
+                      Watch now
+                    </button>
+                  </Fade>
+                </Link>
+              )}
+
+              <Link to={`/${movie.media_type}/${movie.id}`}>
+                <Fade bottom>
+                  <button className='bg-white text-red-600 px-10 py-2 rounded-full text-2xl font-semibold lg:hover:scale-105'>
+                    Infor
+                  </button>
+                </Fade>
+              </Link>
             </div>
             <Fade right>
               <img

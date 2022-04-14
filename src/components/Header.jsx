@@ -12,7 +12,7 @@ function Header() {
   const navBar = [
     {
       display: "Home",
-      path: "/Netflix/",
+      path: "/",
     },
     {
       display: "Movies",
@@ -32,8 +32,6 @@ function Header() {
   function openNav() {
     setOpenNavBar(!openNavBar);
   }
-
-
 
   const changeBgNavBar = () => {
     if (window.scrollY >= 64) {
@@ -64,7 +62,7 @@ function Header() {
         bgNavBar ? "lg:bg-black duration-500" : ""
       } `}>
       <div className='sm:absolute sm:left-10 w-36 mx-auto'>
-        <Link to='/Netflix/' className=''>
+        <Link to='/' className=''>
           <img
             src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png'
             alt='logo'
@@ -99,12 +97,12 @@ function Header() {
         }`}>
         {navBar.map((item, index) => (
           <li
-          onClick={openNav}
+            onClick={openNav}
             key={index}
             className={`sm:inline-block p-4 font-bold text-xl ${
               index === active ? "text-red-600" : ""
             }`}>
-            <Link  to={item.path}>{item.display}</Link>
+            <Link to={item.path}>{item.display}</Link>
           </li>
         ))}
       </ul>
