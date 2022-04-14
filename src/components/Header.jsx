@@ -12,7 +12,7 @@ function Header() {
   const navBar = [
     {
       display: "Home",
-      path: "/",
+      path: "/Netflix/",
     },
     {
       display: "Movies",
@@ -62,7 +62,7 @@ function Header() {
         bgNavBar ? "lg:bg-black duration-500" : ""
       } `}>
       <div className='sm:absolute sm:left-10 w-36 mx-auto'>
-        <Link to='/' className=''>
+        <Link to='/Netflix/' className=''>
           <img
             src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png'
             alt='logo'

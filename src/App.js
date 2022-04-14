@@ -22,7 +22,7 @@ function App() {
         />
         <Route path='/movies' element={<Movies />} />
         <Route path='/series' element={<TVs />} />
-        <Route path='/' element={<Home />} />
+        <Route path='/Netflix/' element={<Home />} />
         <Route path='/watch/' />
       </Routes>
     </Router>
